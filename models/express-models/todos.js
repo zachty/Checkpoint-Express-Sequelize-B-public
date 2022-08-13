@@ -10,6 +10,8 @@ let tasks = {}; //
   }
 */
 
+//might let tasks be and object with these on the prototype
+
 module.exports = {
   reset: function () {
     tasks = {}; // (this function is completed for you.)
@@ -30,6 +32,7 @@ module.exports = {
     } else {
       tasks[name] = [task];
     }
+    return task;
   },
 
   list: function (name) {
@@ -44,8 +47,13 @@ module.exports = {
 
   remove: function (name, idx) {
     // removes a tasks
-    tasks[name] = tasks[name].filter(
-      (task) => tasks[name].indexOf(task) !== idx
-    );
+    // tasks[name] = tasks[name].filter(
+    //   (task) => tasks[name].indexOf(task) !== idx
+    // );
+    // const before = [...tasks[name].slice(0, idx)];
+    // const after = [...(tasks[name].slice(idx)];
+    // tasks[name] = [...before, ...after];
+    //above two methods work for express model test but not route
+    tasks[name].splice(idx, 1);
   },
 };
